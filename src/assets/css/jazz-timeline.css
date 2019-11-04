@@ -2678,6 +2678,23 @@
     top: 0
 }
 
+.jazz-timeline1:before, .multiline-timeline .timeline-post:before {
+    /*content: "";*/
+    background-color: #C1C1C1;
+    background-image: -webkit-linear-gradient(top, #EAF0F2 0%, #C1C1C1 8%, #C1C1C1 92%, #EAF0F2 100%);
+    background-image: -moz-linear-gradient(top, #EAF0F2 0%, #C1C1C1 8%, #C1C1C1 92%, #EAF0F2 100%);
+    background-image: -ms-linear-gradient(top, #EAF0F2 0%, #C1C1C1 8%, #C1C1C1 92%, #EAF0F2 100%);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: -2px;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 4px;
+    left: 50%;
+    top: 0
+}
 .header2 {
     background-color: #0e90d2;
     background-size: cover;
@@ -2767,6 +2784,10 @@
 }
 
 .jazz-timeline.one-sided:before {
+    left: 0
+}
+
+.jazz-timeline1.one-sided:before {
     left: 0
 }
 
@@ -3386,6 +3407,15 @@
     background-image: -ms-linear-gradient(top, #FFF 0%, #C1C1C1 8%, #C1C1C1 92%, #FFF 100%)
 }
 
+.white-timeline:before, .jazz-timeline1.white-timeline.one-sided:before {
+    background-color: #32363B;
+    background-image: -webkit-linear-gradient(top, #FFF 0%, #C1C1C1 8%, #C1C1C1 92%, #FFF 100%);
+    background-image: -moz-linear-gradient(top, #FFF 0%, #C1C1C1 8%, #C1C1C1 92%, #FFF 100%);
+    background-image: -ms-linear-gradient(top, #FFF 0%, #C1C1C1 8%, #C1C1C1 92%, #FFF 100%)
+}
+
+
+
 .white-timeline .timeline-post .icon-dot-full, .white-timeline .timeline-post .icon-dot .timeline-bar, .jazz-timeline.white-timeline.one-sided .timeline-post .icon-dot-full, .white-timeline .timeline-post .icon-dot-full-white .timeline-bar, .jazz-timeline.white-timeline.one-sided .timeline-post .icon-dot .timeline-bar, .jazz-timeline.white-timeline.one-sided .timeline-post .icon-dot-full-white .timeline-bar {
     background: #C1C1C1
 }
@@ -3917,6 +3947,10 @@
         left: 16px
     }
 
+    .jazz-timeline1:before, .multiline-timeline .timeline-post:before {
+        left: 16px
+    }
+
     .jazz-timeline .timeline-post, .jazz-timeline .timeline-post:nth-child(even) {
         margin: 0;
         padding: 0 0 30px 60px;
@@ -4142,5 +4176,10 @@
 
     .ultimate-style .timeline-post .timeline-content .red-title:before, .ultimate-style .timeline-post:nth-child(even) .timeline-content .red-title:before {
         border-right-color: #DC4747
+    }
+
+    .jazz-timeline1 {
+        padding: 20px 0;
+        position: relative
     }
 }

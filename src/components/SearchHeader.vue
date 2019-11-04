@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="SearchHeader">
         <el-input
                 placeholder="请输入查询内容"
                 v-model="searchText"
@@ -34,6 +34,11 @@
     };
 </script>
 <style>
+    .SearchHeader {
+        width: 60%;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
 </style>
 
 

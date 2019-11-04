@@ -1,7 +1,9 @@
 <template>
     <div class="projectInformation">
+        <SearchHeader :searchValue="searchText"></SearchHeader>
 
         <div v-if="projectType === 'ProjectUnit'">
+
             <el-tabs
                     type="border-card"
                     v-model="sortType"
@@ -29,17 +31,7 @@
                             :sortType="sortType"
                     ></TimeAxis>
                 </el-tab-pane>
-                <el-tab-pane
-                        label="规模大小"
-                        name="sortScale"
-                >
-                    <TimeAxis
-                            :dataList="dataList"
-                            :projectType="projectType"
-                            :paramName="paramName"
-                            :sortType="sortType"
-                    ></TimeAxis>
-                </el-tab-pane>
+
                 <el-tab-pane
                         label="业务类型"
                         name="sortBusiness"
@@ -57,7 +49,7 @@
             <el-tabs
                     type="border-card"
                     v-model="sortType"
-                    @tab-click="onProjectLocationTabClick"
+                    @tab-click=""
             >
                 <el-tab-pane
                         label="建设单位"
@@ -75,23 +67,13 @@
                         name="sortTime"
                 >
                     <TimeAxis
-                            :dataList="dataList"
+                            :dataList="dataList" onProjectLocationTabClick
                             :projectType="projectType"
                             :paramName="paramName"
                             :sortType="sortType"
                     ></TimeAxis>
                 </el-tab-pane>
-                <el-tab-pane
-                        label="规模大小"
-                        name="sortScale"
-                >
-                    <TimeAxis
-                            :dataList="dataList"
-                            :projectType="projectType"
-                            :paramName="paramName"
-                            :sortType="sortType"
-                    ></TimeAxis>
-                </el-tab-pane>
+
                 <el-tab-pane
                         label="业务类型"
                         name="sortBusiness"
@@ -121,10 +103,11 @@
 <script>
     import TimeAxis from "@/components/TimeAxis.vue";
     import BASEURL from "@/httpconfig/api.js";
+    import SearchHeader from "@/components/SearchHeader"
 
     export default {
         name: "ProjectInformation",
-        components: {TimeAxis},
+        components: {TimeAxis, SearchHeader},
         computed: {},
         data() {
             return {
@@ -132,12 +115,15 @@
                 isShow: true,
                 dataList: null,
                 projectType: "",
-                paramName: "" //项目名称
+                paramName: "", //项目名称
+                searchText: "",//搜索框内容
             };
         },
         mounted() {
             // this.onRouteRefreshSearchText();
+            this.searchText = this.$route.query.searchText;
             this.getProjectDataFromRoute();
+
         },
         methods: {
             onProjectUnitTabClick(tab, event) {
@@ -279,4 +265,12 @@
 </script>
 
 <style scoped>
+    .location-icon {
+        width: 185px;
+        hight: 30px;
+        align: center;
+        background-color: yellow;
+        padding: 13px;
+        margin: 50px;
+    }
 </style>

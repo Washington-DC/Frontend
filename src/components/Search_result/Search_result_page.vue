@@ -1,16 +1,25 @@
 <template>
     <div class="search-result_page">
 
-        <Retrieval></Retrieval>
+        <Retrieval :searchText="searchText"></Retrieval>
 
-        <RetrievalResult :information="information"></RetrievalResult>
-        <div class="foot">
-            <el-pagination
-                    background
-                    layout="prev, pager, next"
-                    :total=page*10>
-            </el-pagination>
-        </div>
+        <RetrievalResult
+                :projectLists="SortProjectLists"
+                :totalElement="projectLists.totalElements"
+                :getradioSorted="myradioSorted"
+                @radioSorted='getradioSorted'
+        ></RetrievalResult>
+        <el-pagination
+                v-if="isPaginationShow"
+                layout="prev, pager, next"
+                :total="projectLists.totalElements"
+                :page-size="20"
+                @current-change="onPageChange"
+                @prev-click="onPrevClick"
+                @next-click="onNextClick"
+        >
+        </el-pagination>
+
     </div>
 
 </template>
@@ -24,52 +33,35 @@
         components: {
             Retrieval, RetrievalResult
         },
+        props: {projectLists: Object, radioSorted: String, SortProjectLists: Array, searchText: String},
         data() {
             return {
-                information: [
-                    {
-                        name: "1#商业楼等2项（西城区华龙大厦项目）",
-                        company: '北京都市圣景房地产开发有限公司',
-                        location: '西城区德外大街18号',
-                        about: '1994规条字0456号',
-                        type: '',
-                        label: '第一阶段'
-                    },
-                    {
-                        name: '1#居民楼等2项（西城区华龙大厦项目）',
-                        company: '北京都市圣景房地产开发有限公司',
-                        location: '西城区德外大街18号',
-                        about: '1994规条字0456号',
-                        type: 'success',
-                        label: '第二阶段'
-                    },
-                    {
-                        name: '1#商业楼等2项（西城区华龙大厦项目）',
-                        company: '北京都市圣景房地产开发有限公司',
-                        location: '西城区德外大街18号',
-                        about: '1994规条字0456号',
-                        type: 'danger',
-                        label: '第三阶段'
-                    },
-                    {
-                        name: '1#居民楼等2项（西城区华龙大厦项目）',
-                        company: '北京都市圣景房地产开发有限公司',
-                        location: '西城区德外大街18号',
-                        about: '1994规条字0456号',
-                        type: 'warning',
-                        label: '第四阶段'
-                    },
-                    {
-                        name: '1#商业楼等2项（西城区华龙大厦项目）',
-                        company: '北京都市圣景房地产开发有限公司',
-                        location: '西城区德外大街18号',
-                        about: '1994规条字0456号',
-                        type: 'danger',
-                        label: '第三阶段'
-                    },
+                myradioSorted: ""
+            }
+        },
+        computed: {
+            isPaginationShow: function () {
+                //是否显示分页组件
+                return this.projectLists.totalElements / 20 > 1;
+            }
+        },
+        methods: {
+            getradioSorted(val) {
+                this.myradioSorted = val;
 
-                ],
-                page: 10,
+            },
+            onRadioSorted() {
+                console.log(this.myradioSorted);
+                this.$emit("onRadioSorted", this.myradioSorted);
+            },
+            onPageChange(page) {
+                this.$emit("onPageChange", page);
+            },
+            onNextClick(page) {
+                this.$emit("onNextClick", page);
+            },
+            onPrevClick(page) {
+                this.$emit("onPrevClick", page);
             }
         }
     }

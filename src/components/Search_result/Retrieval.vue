@@ -3,25 +3,30 @@
         <div class="input">
             <el-input
                     placeholder="请输入查询内容"
-                    v-model="input"
+                    v-model="searchText"
                     clearable>
             </el-input>
         </div>
         <div class="search">
             <el-button type="primary">信息检索</el-button>
-            <el-button type="primary">统计检索</el-button>
+            <el-button type="primary" v-on:click="jumpStatistics">统计检索</el-button>
         </div>
     </div>
 </template>
 
 <script>
+
     export default {
         name: "Retrieval",
         data() {
-            return {
-                input: ''
-            }
+            return {}
         },
+        props: ["searchText"],
+        methods: {
+            jumpStatistics: function () {
+                this.$router.push({path: "/StatisticsPage"})
+            },
+        }
     }
 </script>
 

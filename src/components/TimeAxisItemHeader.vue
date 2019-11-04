@@ -71,5 +71,6 @@
     .timeaxis-item-header {
         cursor: pointer;
         color: blue;
+        width: 154px;
     }
 </style>

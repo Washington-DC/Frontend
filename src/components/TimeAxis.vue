@@ -12,13 +12,15 @@
 
         <el-container>
             <el-main style="margin:0px;padding:0px;">
+
+
                 <div
                         class="jazz-timeline-wrapper"
                         v-for="(item,index) in dataList"
                         :key="index"
                         style="margin-bottom:0px;margin-top:0px;"
                 >
-                    <div class="jazz-timeline white-timeline bordered-timeline one-sided">
+                    <div class="jazz-timeline white-timeline one-sided">
 
                         <div class="timeline-post">
                             <div class="timeline-meta for-large-icons">
@@ -54,7 +56,7 @@
                     </div><!-- .timeline -->
                 </div><!-- .jazz-timeline-wrapper -->
             </el-main>
-            <el-aside width="200px">
+            <el-aside width="490px">
                 <timeAxisAside
                         :dataList="asideDataList"
                         :projectType="projectType"
@@ -243,4 +245,33 @@
     .content-title a {
         text-decoration: none;
     }
+
+    .timeline-meta {
+        top: 79px;
+        font-size: 150%;
+    }
+
+    .timeline-content {
+        margin-left: 154px;
+    }
+
+    .timeline-icon {
+        left: 0;
+        margin: -40px 0 18px 680px;
+        line-height: 70px;
+        border-radius: 40px;
+        height: 20px;
+        width: 20px;
+        z-index: 10;
+    }
+
+    .iconbg-turqoise {
+        box-shadow: 0 0 0 4px white, inset 0 0 0 2px rgba(0, 0, 0, 0.05), 0 0 0 8px rgba(0, 0, 0, 0.2);
+        background-color: #FF9900;
+    }
+
+    .icon-color-white {
+        color: white;
+    }
+
 </style>

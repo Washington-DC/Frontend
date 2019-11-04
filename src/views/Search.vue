@@ -20,6 +20,7 @@
                             :SortProjectLists="projectSortedLists"
                             :projectLists="projectLists"
                             :radioSorted="radioSorted"
+                            :searchText="searchText"
                             @onRadioSorted="onRadioSorted"
                             @onPageChange="onPageChange"
                             @onPrevClick="onPrevClick"
